@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct User {
+class User {
     var firstname = "Arap"
     var lastname = "Ketung"
 }
