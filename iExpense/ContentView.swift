@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+struct ForthView: View {
+    @State private var tapCount = 1
+    var body: some View{
+        Button("Tap count: \(tapCount)"){
+            tapCount += 1
+            UserDefaults.standard.set(tapCount, forKey: "Tap")
+        }
+    }
+}
+
 struct ThirdView: View {
     @State private var numbers = [Int]()
     @State private var currentNumber = 1
@@ -55,7 +65,13 @@ struct ContentView: View {
     @State private var showingSheet = false
     @StateObject var user = User()
     var body: some View {
-        VStack {
+        VStack(spacing:20) {
+            Button("Storing User settings/data View"){
+                showingSheet.toggle()
+            }
+            .sheet(isPresented: $showingSheet){
+                ForthView()
+            }
             Button("Show Deleting Data View") {
                 showingSheet.toggle()
             }
