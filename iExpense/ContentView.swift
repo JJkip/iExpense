@@ -7,6 +7,23 @@
 
 import SwiftUI
 
+struct UserB: Codable {
+    let firstName: String
+    let lastName: String
+}
+
+struct FifthVIew: View {
+    @State private var user = UserB(firstName: "David", lastName: "Kipbet")
+    var body: some View{
+        Button("Save User"){
+            let encoder = JSONEncoder()
+            if let data = try? encoder.encode(user){
+                UserDefaults.standard.set(data, forKey: "UserData")
+            }
+        }
+    }
+}
+
 struct ForthView: View {
     @AppStorage("tapCount") private var tapCount = 0
 //    @State private var tapCount = UserDefaults.standard.integer(forKey: "Tap")
@@ -67,6 +84,12 @@ struct ContentView: View {
     @StateObject var user = User()
     var body: some View {
         VStack(spacing:20) {
+            Button("Storing data with codable"){
+                showingSheet.toggle()
+            }
+            .sheet(isPresented: $showingSheet){
+                FifthVIew()
+            }
             Button("Storing User settings/data View"){
                 showingSheet.toggle()
             }
