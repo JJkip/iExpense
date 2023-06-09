@@ -4,7 +4,7 @@
 //
 //  Created by Joseph Langat on 07/06/2023.
 //
-
+//expense app starts deleting this code for new one
 import SwiftUI
 
 struct UserB: Codable {
