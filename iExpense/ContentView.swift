@@ -32,7 +32,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingAddExpense) {
                 AddView(expenses: expenses)
-            }
+            } 
         }
     }
     func removeItems(at offsets: IndexSet) {
